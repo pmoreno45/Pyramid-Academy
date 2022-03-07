@@ -1,2 +1,2 @@
 # Pyramid-Academy
-My Work
+My Course Work
