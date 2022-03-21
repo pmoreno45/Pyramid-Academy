@@ -39,7 +39,7 @@ public class Main {
 
         System.out.println("Well, " + userName + ", I am thinking of a number between 1 and 20 \n"); //prompt for user
 
-        while(playing == true) { //while playing is true. Generate number, reset trials, and reset attempts to 0
+        while (playing == true) { //while playing is true. Generate number, reset trials, and reset attempts to 0
             computerNum = number.nextInt((max - min + 1) + min); //Generates new number every time the outer loop is passed
             numOfTrials = 6; //instantiates number of trials everytime the loop is passed
             attempts = 0;//instantiates attempts  everytime the loop is passed
@@ -47,25 +47,25 @@ public class Main {
                 System.out.println("Take a guess. You get 6 attempts."); //prompt for user
                 guess = getInput.nextInt(); //input for user guess
                 numOfTrials--; //decrements how many attempts are left
-                attempts ++; //counts number of attempts
+                attempts++; //counts number of attempts
 
                 if (guess == computerNum) { //if user is correct prompt them with number of attempts and if they want to play again
                     System.out.println("You are correct! You did it in: " + attempts + " attempts"); //prompt for user
                     System.out.println("Would you like to play again?(Y/N)");//prompt for player to play again
-                    willPlay = getAns.nextLine(); //reads input from player
+                    //willPlay = getAns.nextLine(); //reads input from player
                 } else if (guess < computerNum) { //if player guess is too low prompt them with number of attempts left
                     System.out.println("Too low. You have " + numOfTrials + " attempts left"); //prompt for user
                 } else if (guess > computerNum) {//if player guess is too high prompt them with number of attempts left
                     System.out.println("Too high You have " + numOfTrials + " attempts left"); //prompt for user
                 }
-            }
-            if (numOfTrials == 0) { //if the player runs out of trials prompt the correct number and if they want to play again
-                System.out.println("Out of attempts. The correct number was: " + computerNum); //prompt for user
-                System.out.println("Would you like to play again?(Y/N)");//prompt for user
-                willPlay = getAns.nextLine();//reads input from user
+                if (numOfTrials == 0 && guess != computerNum) { //if the player runs out of trials prompt the correct number and if they want to play again
+                    System.out.println("Out of attempts. The correct number was: " + computerNum); //prompt for user
+                    System.out.println("Would you like to play again?(Y/N)");//prompt for user
+                }
             }
 
-            if(willPlay.equalsIgnoreCase("N")){//if player answers no set playing to false and break outer loop
+            willPlay = getAns.nextLine();//reads input from user
+            if (willPlay.equalsIgnoreCase("N")) {//if player answers no set playing to false and break outer loop
                 playing = false;
             }
 
